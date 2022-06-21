@@ -1,0 +1,244 @@
+:root {
+    --color-whitish: rgb(226, 225, 225);
+    --color-light: rgb(182, 182, 182);
+    --color-mediumLight: rgb(165, 165, 165);
+    --color-medium: rgb(153, 152, 152);
+    --color-dark: black;
+    --color-accent: rgb(137, 178, 255);
+    --color-cell-hover-nonempty: rgb(250, 141, 141);
+    --color-cell-hover-empty: aqua;
+    --color-cell-gameover-win: rgb(35, 189, 35);
+    --color-cell-gameover-draw: rgb(236, 63, 98);
+    --color-cell-winning-cell: lightgreen;
+    font-size: 11pt;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.2rem;
+    --header-height: 55px;
+    --header-margin: 10px;
+    --body-height:calc(100vh - calc(var(--header-height) + var(--header-margin)));
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--color-light);
+    display: grid;
+}
+
+/*
+
+CONTAINERS 
+
+*/
+
+/* header */
+
+.header {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--color-whitish);
+    box-shadow: 0px 0px 15px 5px var(--color-whitish);
+    margin-bottom: var(--header-margin);
+}
+
+@media only screen and (max-width: 330px) {
+    .header {
+        font-size: 1rem;
+    }
+}
+
+
+/* intro */
+
+.container-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: var(--body-height);
+    transition: 1s;
+    position: relative;
+}
+
+.intro {
+    display: grid;
+    margin: 0px 15px;
+    padding: 10px 25px;
+    background-color: var(--color-mediumLight);
+    border: 1px solid var(--color-dark);
+    box-shadow: 0px 0px 10px 3px inset var(--color-whitish);
+    border-radius: 10px;
+    max-width: 650px;
+}
+
+.intro>p {
+    margin: 20px 0px;
+}
+
+.name-select-form {
+    display: grid;
+    justify-self: center;
+    grid-auto-rows: 1fr;
+    justify-items: center;
+    align-content: center;
+    border-radius: 10px;
+    background-color: var(--color-light);
+    margin-bottom: 10px;
+}
+
+.name-select-form > * {
+    padding: 10px 25px;
+}
+
+.name-select-form>label {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+}
+
+@media only screen and (max-width: 570px) {
+    .name-select-form>label {
+        grid-template: 1fr 1fr/ 1fr;
+    }
+}
+
+.name-select-form >label> input {
+    background-color: var(--color-mediumLight);
+    border: 1px solid var(--color-medium);
+    border-radius: 100px;
+    min-width: 50px;
+    padding: 10px 25px;
+}
+
+.name-select-form >label> input:focus {
+    background-color: var(--color-medium);
+}
+
+.name-select-form>label>input:focus {
+    outline: none;
+}
+
+.name-select-form>label>input:valid {
+    border-color: var(--color-cell-gameover-win);
+}
+
+.name-select-form>label>input:invalid {
+    border-color: var(--color-cell-gameover-draw);
+}
+
+.player-name-accept {
+    padding: 10px 25px;
+    border-radius: 100px;
+    border: 1px solid var(--color-dark);
+    justify-self: center;
+}
+
+.player-name-accept:hover {
+    background-color: var(--color-accent);
+}
+
+.player-name-accept:active {
+    background-color: var(--color-cell-winning-cell);
+    box-shadow: 0px 0px 5px 5px inset var(--color-cell-gameover-win);
+}
+
+/* board */
+
+.container-board {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    grid-template: 1fr/ 1fr;
+    grid-auto-rows: 1fr;
+    height: var(--body-height);
+}
+
+#board {
+    --cell-dim: 100px;
+    --gap: 5px;
+    --board-dim: calc(calc(3*var(--cell-dim)) + calc(var(--gap) * 2));
+    display: grid;
+    grid-template: repeat(3, 1fr)/ repeat(3, 1fr);
+    justify-items: center;
+    width: var(--board-dim);
+    height: var(--board-dim);
+    gap: var(--gap);
+    background-color: var(--color-whitish);
+    border: var(--gap) solid var(--color-whitish);
+    border-radius: 10px;
+}
+
+.board-cell {
+    background-color: var(--color-mediumLight);
+    width: var(--cell-dim);
+    height: var(--cell-dim);
+    border-radius: 10px;
+    color: black;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+
+}
+
+@media (max-width: 370px) {
+    #board {
+        --cell-dim: 80px;
+        --board-dim: calc(calc(3*var(--cell-dim)) + calc(var(--gap) * 2)) * 0.75;
+        width: var(--board-dim);
+        height: var(--board-dim);
+    }
+    .board-cell {
+        width: var(--cell-dim);
+        height: var(--cell-dim);
+    }
+}
+
+.board-cell:hover {
+    background-color: var(--color-cell-hover-nonempty);
+}
+
+.board-cell.empty:hover {
+    background-color: var(--color-cell-hover-empty);
+}
+
+/* GAME END FORMATTING */
+
+.win-found {
+    background-color: var(--color-cell-gameover-win);
+}
+
+.draw-found {
+    background-color: var(--color-cell-gameover-draw);
+}
+
+.winning-cell {
+    background-color: var(--color-cell-winning-cell);
+}
+
+.winning-cell:hover,
+.win-found:hover {
+    background-color: var(--color-medium);
+}
+
+.game-declared-over {
+    position: absolute;
+    top: calc(var(--header-height) + var(--header-margin));
+    font-size: 3rem;
+}
+
+#restart-button {
+    align-self: start;
+}
+
+/* HIDDEN NODES */
+
+.hidden {
+    transform: translateX(300%) scale(0.1);
+}
