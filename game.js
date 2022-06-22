@@ -5,6 +5,7 @@ const PLAYERS = 2;
 let players = [];
 
 let gameOver, boardArr, introElement, boardElement;
+const contentDiv = document.querySelector('.content');
 
 // start game for first time
 start();
@@ -17,18 +18,17 @@ start();
 
 function start() {
     gameOver = false;
-    const body = document.querySelector('body');
 
     const boardOld  = document.querySelector('div.container-board');
-    if (boardOld !== null) body.removeChild(boardOld); 
+    if (boardOld !== null) contentDiv.removeChild(boardOld); 
 
     const introOld = document.querySelector('div.container-intro');
-    if (introOld !== null) body.removeChild(introOld);
+    if (introOld !== null) contentDiv.removeChild(introOld);
 
     boardArr = createBoard(BOARD_SIZE);
 
     introElement = createIntro();
-    document.querySelector('body').appendChild(introElement);
+    contentDiv.appendChild(introElement);
 }
 
 function createIntro() {
@@ -105,7 +105,7 @@ function processIntro(event) {
         const container = document.querySelector('.container-intro');
         container.classList.add('hidden');
         setTimeout(() => {
-            document.querySelector('body').removeChild(container);
+            contentDiv.removeChild(container);
             prepareGame(p1Name, p2Name);
         }, 250);
 
@@ -128,7 +128,6 @@ function prepareGame(p1Name, p2Name) {
     currentPlayer = players[0];
     const containerBoard = document.createElement('div');
     const insideContainer = document.createElement('div');
-    const body = document.querySelector('body');
     containerBoard.classList.add("container-board");
     insideContainer.id = "board";
     containerBoard.appendChild(insideContainer);
@@ -140,7 +139,7 @@ function prepareGame(p1Name, p2Name) {
     buttonRestart.addEventListener('click', start);
 
     containerBoard.appendChild(buttonRestart);
-    body.appendChild(containerBoard);
+    contentDiv.appendChild(containerBoard);
     displayBoard(boardArr);
 }
 

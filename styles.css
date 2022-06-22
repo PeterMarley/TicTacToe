@@ -15,7 +15,7 @@
     letter-spacing: 0.2rem;
     --header-height: 55px;
     --header-margin: 10px;
-    --body-height:calc(100vh - calc(var(--header-height) + var(--header-margin)));
+    --body-height: calc(100vh - calc(var(--header-height) + var(--header-margin)));
 }
 
 body {
@@ -55,13 +55,18 @@ CONTAINERS
 
 /* intro */
 
+.content {
+    position: relative;
+    display: grid;
+    justify-content: start;
+}
+
 .container-intro {
     display: flex;
     justify-content: center;
-    align-items: center;
-    max-height: var(--body-height);
+    align-items: start;
+    max-height: calc(100% - var(--header-height));
     transition: 1s;
-    position: relative;
 }
 
 .intro {
@@ -73,6 +78,7 @@ CONTAINERS
     box-shadow: 0px 0px 10px 3px inset var(--color-whitish);
     border-radius: 10px;
     max-width: 650px;
+    max-height: var(--body-height);
 }
 
 .intro>p {
@@ -90,7 +96,7 @@ CONTAINERS
     margin-bottom: 10px;
 }
 
-.name-select-form > * {
+.name-select-form>* {
     padding: 10px 25px;
 }
 
@@ -105,7 +111,7 @@ CONTAINERS
     }
 }
 
-.name-select-form >label> input {
+.name-select-form>label>input {
     background-color: var(--color-mediumLight);
     border: 1px solid var(--color-medium);
     border-radius: 100px;
@@ -113,7 +119,7 @@ CONTAINERS
     padding: 10px 25px;
 }
 
-.name-select-form >label> input:focus {
+.name-select-form>label>input:focus {
     background-color: var(--color-medium);
 }
 
@@ -171,6 +177,7 @@ CONTAINERS
     background-color: var(--color-whitish);
     border: var(--gap) solid var(--color-whitish);
     border-radius: 10px;
+    position: relative;
 }
 
 .board-cell {
@@ -194,6 +201,7 @@ CONTAINERS
         width: var(--board-dim);
         height: var(--board-dim);
     }
+
     .board-cell {
         width: var(--cell-dim);
         height: var(--cell-dim);
@@ -228,9 +236,19 @@ CONTAINERS
 }
 
 .game-declared-over {
+    --shadow-color: var(--color-accent);
+    --shadow-blur: 6px;
     position: absolute;
-    top: calc(var(--header-height) + var(--header-margin));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 3rem;
+    min-width: 250px;
+    text-align: center;
+    text-shadow: 0px 1px var(--shadow-blur) var(--shadow-color),
+        1px 0px var(--shadow-blur) var(--shadow-color),
+        0px -1px var(--shadow-blur) var(--shadow-color),
+        -1px 0px var(--shadow-blur) var(--shadow-color);
 }
 
 #restart-button {
