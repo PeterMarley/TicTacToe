@@ -58,7 +58,7 @@ CONTAINERS
 .content {
     position: relative;
     display: grid;
-    justify-content: start;
+    justify-content: center;
 }
 
 .container-intro {
