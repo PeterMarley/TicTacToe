@@ -11,8 +11,53 @@
 </head>
 
 <body>
-    <div class="header">Tic-Tac-Toe</div>
-    <div class="content"></div>
+    <!-- HEADER -->
+    <div class="container-header">Tic-Tac-Toe</div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container-content">
+
+        <!-- INTRO -->
+        <div class="container-intro">
+            <div class="intro">
+                <p>Hello, welcome to Tic-Tac-Toe. Get 3 in a line to win (horizontally, vertically or diagonally).</p>
+                <p>Please enter the player names below</p>
+                <form class="name-select-form">
+                    <label for="player1-name">
+                        Enter Player 1 Name:
+                        <input type="text" id="player1-name" required="" pattern="^[A-Za-z]+$">
+                    </label>
+                    <label for="player2-name">
+                        Enter Player 2 Name:
+                        <input type="text" id="player2-name" required="" pattern="^[A-Za-z]+$">
+                    </label>
+                </form>
+                <button class="player-name-accept">Play!</button>
+            </div>
+        </div>
+
+        <!-- GAME -->
+        <div class="container-board">
+            <div id="board">
+                <div class="board-cell empty" data-cell="1"></div>
+                <div class="board-cell empty" data-cell="2"></div>
+                <div class="board-cell empty" data-cell="3"></div>
+                <div class="board-cell empty" data-cell="4"></div>
+                <div class="board-cell empty" data-cell="5"></div>
+                <div class="board-cell empty" data-cell="6"></div>
+                <div class="board-cell empty" data-cell="7"></div>
+                <div class="board-cell empty" data-cell="8"></div>
+                <div class="board-cell empty" data-cell="9"></div>
+                <div class="game-declared-over hidden">a wins!</div>
+            </div>
+            <button class="player-name-accept" id="restart-button">Restart Game</button>
+        </div>
+
+
+    </div>
+
+
+
 </body>
 
 </html>
